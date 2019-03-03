@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+
+# TODO ech 2019-03-02 - translate to python and do a decent job of error handling
+
+#me=`basename "$0"`
+
+#echo "Input Files:"
+#for var in "$@"
+#do
+#    echo "$var"
+#done
+#echo
+
+black_settings="--line-length 100"
+black ${black_settings} "$@"
+
+docformatter_settings="--wrap-summaries 95 --wrap-descriptions 90 --in-place"
+docformatter ${docformatter_settings} "$@"
+
+isort_settings="--atomic --line-width 100 --multi-line 3 --combine-star --combine-as --trailing-comma --lines-after-imports 2"
+isort ${isort_settings} "$@"

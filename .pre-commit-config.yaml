@@ -1,0 +1,22 @@
+# This is not an example config file, it is for this project.
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.1.0
+    hooks:
+      - id: check-merge-conflict
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+        exclude_types: [markdown]
+      - id: check-ast
+        types: [python]
+      - id: debug-statements
+        types: [python]
+
+  # so meta...
+#  - repo: https://github.com/NationalOutdoorLeadershipSchool/format-code
+#    rev: v0.5.0
+#    hooks:
+#      - id: format-python
+#        language_version: python3.7
+#        types: [python]

@@ -1,0 +1,9 @@
+- id: format-python
+  name: Format Python
+  description: Format NOLS Python code using black, isort, docformatter
+  entry: format_python_code
+  types: [python]
+  language: python
+  language_version: python3.7
+
+# TODO ech 2019-03-02 - add wrapper hook for prettier (javascript) with our specific flags

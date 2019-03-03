@@ -1,0 +1,7 @@
+# include dependencies for all deployments
+-r base.txt
+
+# development dependencies
+pip-tools
+pipdeptree
+pre-commit>=1.14.0
