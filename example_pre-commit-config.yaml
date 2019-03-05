@@ -1,3 +1,5 @@
+# This is an example of settings for a typical NOLS project.
+
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.1.0
@@ -12,20 +14,28 @@ repos:
         types: [python]
 
   - repo: https://github.com/NationalOutdoorLeadershipSchool/format-code
-    rev: v0.5.0
+    rev: v0.8.0
     hooks:
       - id: format-python
         types: [python]
         language_version: python3.7
 
-# TODO ech 2019-03-02 - update to use the format-javascript hook
-#  - repo: https://github.com/prettier/prettier
-#    rev: master
-#    hooks:
-#      - id: prettier
-#        types: [javascript]
-#        exclude: ^.*.min.js$ # skip minified libraries
-#        args:
-#          - --print-width=100
-#          - --single-quote
-#          - --end-of-line=lf
+  - repo: https://github.com/prettier/prettier
+    rev: master
+    hooks:
+      - id: prettier
+        exclude: ^.*.min.js$ # skip minified libraries
+        files: "\\.(\
+           css|less|scss\
+           |js|jsx\
+           |json\
+           |md|markdown|mdown|mkdn\
+           |mdx\
+           |ts|tsx\
+           |vue\
+           |yaml|yml\
+           )$"
+        args:
+          - --print-width=100
+          - --single-quote
+          - --end-of-line=lf

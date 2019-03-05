@@ -25,7 +25,7 @@ setup(
     author="NOLS devs",
     author_email="developer@nols.edu",
     url="https://github.com/NationalOutdoorLeadershipSchool/format-code",
-    scripts=["format_python_code"],
+    scripts=["format_python_code.py"],
     install_requires=reqs,
     classifiers=[
         "Development Status :: 5 - Production/Stable",
