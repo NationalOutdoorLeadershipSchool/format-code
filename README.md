@@ -1,6 +1,6 @@
 # format-code
-Pre-commit formatting hooks for NOLS code.
 
+Pre-commit formatting hooks for NOLS code.
 
 ## Installation
 
@@ -11,7 +11,6 @@ pip install pre-commit
 ```
 
 - Create or copy a **.pre-commit-config.yaml** file to the root project directory. It might very well be in your repo already. Look at **example_pre-commit-config.yaml** for the general case.
-
 
 - Install the existing config (or the one you just created):
 
@@ -30,13 +29,13 @@ Pre-commit generally just works in the background when you commit or push change
 You can run it manually on staged files:
 
 ```bash
-pre-commit run 
+pre-commit run
 ```
 
 or all files:
 
 ```bash
-pre-commit run --all-files 
+pre-commit run --all-files
 ```
 
 ## Gotchas
@@ -47,6 +46,6 @@ At first pre-commit will take some getting used to and you'll probably become mo
 
 This might require you to adjust your approach depending on your environment. Many IDEs hide the git staging (git add) step and automatically stage all files before running git commit. Bear in mind that pre-commit by default only works on staged file changes.
 
-If pre-commit modifies a file it will abort the commit with the modifications to that file (by definition) unstaged. Now you have three versions of the file: the original, the changes you made, and the changes a hook or hooks made on top of that. With the right tools it does allow you to compare what you submitted (staged) with what came back (unstaged) to decide how to proceed.
+If pre-commit modifies a file it will abort the commit with the modifications to that file (by definition) unstaged. Now you have three versions of the file: the original, the changes you made, and the changes a hook or hooks made on top of that. With the right tools it does allow you to compare what was validated (staged) with what came back (unstaged) to decide how to proceed.
 
 Generally you can commit right after getting aborted and any 'just formatting' changes should commit fine. Or you can choose to apply the formatting before committing: six of one...

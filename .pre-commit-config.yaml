@@ -14,30 +14,21 @@ repos:
         types: [python]
 
   - repo: https://github.com/prettier/prettier
-    rev: master
+    rev: 1.16.2
     hooks:
       - id: prettier
-        types: [javascript]
         exclude: ^.*.min.js$ # skip minified libraries
         files: "\\.(\
-           css|less|scss\
-           |js|jsx\
-           |json\
-           |md|markdown|mdown|mkdn\
-           |mdx\
-           |ts|tsx\
-           |vue\
-           |yaml|yml\
-           )$"
+          css|less|scss\
+          |js|jsx\
+          |json\
+          |md|markdown|mdown|mkdn\
+          |mdx\
+          |ts|tsx\
+          |vue\
+          |yaml|yml\
+          )$"
         args:
           - --print-width=100
           - --single-quote
           - --end-of-line=lf
-
-# so meta...
-#  - repo: https://github.com/NationalOutdoorLeadershipSchool/format-code
-#    rev: v0.5.0
-#    hooks:
-#      - id: format-python
-#        language_version: python3.7
-#        types: [python]
