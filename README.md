@@ -104,10 +104,9 @@ pre-commit run --files some-file.py
 Every editor should allow you to execute external tools. We've included the settings for PyCharm
 (and all other JetBrains tools). In PyCharm, the preferences offer an **External Tools** command.
 
-- The program binary to run. Since we are in a venv this will simply bin
-  `/usr/local/bin/pre-commit`. But if you have to get tricky, JetBrains does offer the
-  `$PyInterpreterDirectory$` macro.
-- The arguments to pass: `--files some-file.py`. JetBrains provides the `$FilePath` macro that will
+- The program binary to run. Since we are in a venv this will simply be `/usr/local/bin/pre-commit`.
+  But if you have to get tricky, JetBrains does offer the `$PyInterpreterDirectory$` macro.
+- The arguments to pass: `--files some-file.py`. JetBrains provides the `$FilePath$` macro that will
   give you the currently active file.
 - The working directory. JetBrains provides the `$ProjectFileDir$` macro.
 - Assign the command to something EASY to use ... and use it a LOT.
