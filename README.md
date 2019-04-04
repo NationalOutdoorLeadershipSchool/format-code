@@ -34,7 +34,7 @@ pip install pre-commit
 pip freeze > requirements.txt
 ```
 
-- Create or copy a **.pre-commit-config.yaml** file to the root project directory. It might very well be in your repo already. Look at **example_pre-commit-config.yaml** for the general case.
+- Create or copy a **.pre-commit-config.yaml** file to the root project directory. Look at **example_pre-commit-config.yaml** for the general case.
 
 - Install the existing config (or the one you just created):
 
