@@ -14,14 +14,14 @@ repos:
         types: [python]
 
   - repo: https://github.com/NationalOutdoorLeadershipSchool/format-code
-    rev: v0.8.0
+    rev: v1.0.0
     hooks:
       - id: format-python
         types: [python]
         language_version: python3.7
 
   - repo: https://github.com/prettier/prettier
-    rev: 1.16.2
+    rev: 1.16.4
     hooks:
       - id: prettier
         exclude: ^.*.min.js$ # skip minified libraries
@@ -36,6 +36,7 @@ repos:
           |yaml|yml\
           )$"
         args:
+          - --prose-wrap=always
           - --print-width=100
           - --single-quote
           - --end-of-line=lf
