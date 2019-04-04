@@ -14,7 +14,7 @@ repos:
         types: [python]
 
   - repo: https://github.com/NationalOutdoorLeadershipSchool/format-code
-    rev: v0.8.0
+    rev: v1.0.0
     hooks:
       - id: format-python
         types: [python]
