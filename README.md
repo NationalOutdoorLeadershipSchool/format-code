@@ -22,7 +22,7 @@ Remember, the automated builds will fail code that does not adhere to our standa
 
 If you're starting a new repository, you will want to configure it with our pre-commit hooks.
 
-- Install pre-commit
+- After creating the git repository, install pre-commit:
 
 ```bash
 pip install pre-commit
