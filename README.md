@@ -12,21 +12,6 @@ pip install -r some-requirements.txt
 pre-commit install
 ```
 
-### First time usage
-
-The above assumes that you have one of our Python formatters ([black](https://github.com/ambv/black)) into your computer's global Python3 `site-packages`.
-
-To install `black` globally:
-
-```bash
-deactivate  # if you're in a working venv
-pip3 install black
-```
-
-Why install this globally?
-
-`black` can format Python2 code but it only runs under Python3. Once all of our code is using Python3 we can move `black` to the individual project virtual envs. Until then, it's just easier to have it in one place.
-
 ### Reformat as you go
 
 You will almost assuredly want to configure your editor to re-format the current file with the same rules that our pre-commit hooks are using. See the section below titled [Configuring your editor](https://github.com/NationalOutdoorLeadershipSchool/format-code#configuring-your-editor).
