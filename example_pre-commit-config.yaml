@@ -33,7 +33,6 @@ repos:
           |mdx\
           |ts|tsx\
           |vue\
-          |yaml|yml\
           )$"
         args:
           - --prose-wrap=always
