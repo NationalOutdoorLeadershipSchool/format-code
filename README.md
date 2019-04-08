@@ -1,6 +1,16 @@
 # format-code
 
-Pre-commit formatting hooks for NOLS code.
+Pre-commit formatting hooks for NOLS code, including a NOLS-specific Python hook.
+
+This repository contains two important items: a NOLS-specific Python formatting package and a sample
+pre-commit configuration file.
+
+The `format_python_code.py` wraps black, isort, and docformatter in such a way that they work as an
+atomic unit. Without this wrapping, black and isort can interact in frustrating ways when used with
+pre-commit.
+
+The sample pre-commit file contains default settings for prettier, which formats a variety of
+formats (mostly HTML, CSS, JavaScript, and Markdown in our situation).
 
 # Typical usage
 
@@ -98,15 +108,27 @@ same tools used by our pre-commit hooks.
 The command we'll want to run would look like this on the command-line:
 
 ```bash
-pre-commit run --files some-file.py
+pre-commit run --files current-file.py
 ```
 
-Every editor should allow you to execute external tools. We've included the settings for PyCharm
-(and all other JetBrains tools). In PyCharm, the preferences offer an **External Tools** command.
+Every editor should allow you to execute external tools. We've included the settings for the PyCharm
+**External Tools** tool available in Preferences. Assign this command an easy-to-use shortcut ...
+and use it a LOT.
 
-- The program binary to run. Since we are in a venv this will simply be `/usr/local/bin/pre-commit`.
-  But if you have to get tricky, JetBrains does offer the `$PyInterpreterDirectory$` macro.
-- The arguments to pass: `--files some-file.py`. JetBrains provides the `$FilePath$` macro that will
-  give you the currently active file.
-- The working directory. JetBrains provides the `$ProjectFileDir$` macro.
-- Assign the command to something EASY to use ... and use it a LOT.
+- **Program**:
+  - `$PyInterpreterDirectory$/pre-commit`
+- **Arguments**:
+  - `run --files $FilePath$`
+- **Working directory:**
+  - `$ProjectFileDir$`
+
+You can see how the settings above will resolve into the `pre-commit run --files current-file.py`
+example. This configuration uses PyCharm's environment variables (called Macros) that help use here.
+Because External Tools are an IDE-wide option, we use the `$PyInterpreterDirectory$` variable so we
+can configure this once and have it work across projects. Without this macro the setting would be
+this for the website project `${NOLSCODE}/venvs/website/bin/precommit`. But we don't want ALL
+projects using the website pre-commit binary, hence the variable.
+
+Similarly, PyCharm offers variable for the current file and working directory.
+
+Most editors should have similar tools to aid configuration.
