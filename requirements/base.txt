@@ -1,6 +1,6 @@
 # Base dependencies for running the package. This is a utility; dependent packages
 # are not pinned to avoid specific and conflicting constraints with other libraries.
 
-black==18.9b0
-docformatter==1.3
+black==19.10b0
+docformatter==1.3.1
 isort==4.3.21

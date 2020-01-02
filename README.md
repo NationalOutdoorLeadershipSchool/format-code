@@ -26,8 +26,7 @@ pre-commit install
 ### Reformat as you go
 
 You will almost assuredly want to configure your editor to re-format the current file with the same
-rules that our pre-commit hooks are using. See the section below titled
-[Configuring your editor](https://github.com/NationalOutdoorLeadershipSchool/format-code#configuring-your-editor).
+rules that our pre-commit hooks are using (see the **Configuring your editor** section).
 
 Remember, the automated builds will fail code that does not adhere to our standard, so you'll always
 want to install the pre-commit hooks!
@@ -57,6 +56,9 @@ pip freeze > requirements.txt
 pre-commit install
 ```
 
+- Create an isort configuration file if your project contains Python code (see the **Python import
+  sorting** section).
+
 That's it! You have now installed pre-commit hooks into your project.
 
 ## Usage
@@ -79,6 +81,8 @@ pre-commit run --all-files
 
 ## Gotchas
 
+#### Overall
+
 **TL;DR:** Pre-commit can refuse your commits a lot. Always stage before committing, pay attention
 to what it is telling you. When in doubt, stage and commit again. Life is MUCH easier if you format
 as you go.
@@ -100,15 +104,34 @@ compare what was validated (staged) with what came back (unstaged) to decide how
 Generally you can commit right after getting aborted and any 'just formatting' changes should commit
 fine. Or you can choose to apply the formatting before committing: six of one...
 
+#### Python import sorting
+
+If your project already has an isort config file (generally named '.isort.cfg'), you can ignore this
+part. If not and you are getting inconstistent python import sorting issues, you should set up a
+project top-level config file along these lines:
+
+```
+[settings]
+;specify project modules so isort doesn't have to determine them (inconsistently) through environment
+known_project=<comma separated list of project modules>
+known_test=<comma separated list of project test modules>
+sections=FUTURE,STDLIB,THIRDPARTY,FIRSTPARTY,PROJECT,TEST,LOCALFOLDER
+```
+
+The issue comes from isort trying to differentiate project modules from third party modules. When it
+has access to a proper environment it can do so correctly. Outside of a proper environment
+(particularly with some editor integrations) it treats project and third party modules the same,
+leading to inconsistent and potentially conflicting formatting results.
+
 ## Configuring your editor
 
-Given the above gotcha, your life will be much easier if you configure it to reformat code with the
-same tools used by our pre-commit hooks.
+Your life will be much easier if you configure your editor to reformat code with the same tools used
+by our pre-commit hooks.
 
 The command we'll want to run would look like this on the command-line:
 
 ```bash
-pre-commit run --files current-file.py
+pre-commit run --files <current-file.py>
 ```
 
 Every editor should allow you to execute external tools. We've included the settings for the PyCharm
@@ -122,13 +145,11 @@ and use it a LOT.
 - **Working directory:**
   - `$ProjectFileDir$`
 
-You can see how the settings above will resolve into the `pre-commit run --files current-file.py`
+You can see how the settings above will resolve into the `pre-commit run --files <current-file.py>`
 example. This configuration uses PyCharm's environment variables (called Macros) that help use here.
 Because External Tools are an IDE-wide option, we use the `$PyInterpreterDirectory$` variable so we
 can configure this once and have it work across projects. Without this macro the setting would be
 this for the website project `${NOLSCODE}/venvs/website/bin/precommit`. But we don't want ALL
 projects using the website pre-commit binary, hence the variable.
-
-Similarly, PyCharm offers variable for the current file and working directory.
 
 Most editors should have similar tools to aid configuration.
