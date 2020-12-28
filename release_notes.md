@@ -1,5 +1,10 @@
 ## Format Code Release Notes
 
+#### 1.2.0 (2020-12-28)
+
+- Updated dependencies and sample config files
+- iSort using v5.0, necessitating command line changes
+
 #### 1.1.1 (2019-12-30)
 
 - Updated dependencies and sample config files
