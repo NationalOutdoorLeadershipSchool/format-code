@@ -4,4 +4,4 @@
   entry: format_python_code.py
   types: [python]
   language: python
-  language_version: python3.7
+  language_version: python3

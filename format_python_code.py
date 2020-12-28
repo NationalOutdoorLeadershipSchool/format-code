@@ -15,19 +15,19 @@ def main():
     code formatting.
 
     They can conflict in sometimes upredictable fashion. When they do, they each
-    modify the file on every pass, resulting in valid but uncommitable changes. The
+    modify the file on every pass, resulting in valid but uncommittable changes. The
     solution is to wrap them all together into one hook so pre-commit treats them
     atomically and is unaware of any transient file modifications.
     """
     files = sys.argv[1:]  # this assumes argv is a pre-filtered list of python files
 
     package_settings = {
-        "black": "--line-length 100",
-        "docformatter": "--wrap-summaries 90 --wrap-descriptions 85 --in-place",
         "isort": (
-            "--atomic --line-width 100 --combine-star --combine-as "
+            "--atomic --line-width 100 --combine-star --combine-as --float-to-top "
             "--multi-line 3 --trailing-comma --lines-after-imports 2"
         ),
+        "docformatter": "--wrap-summaries 90 --wrap-descriptions 85 --in-place",
+        "black": "--line-length 100",
     }
 
     return_value = PASS
