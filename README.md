@@ -147,9 +147,17 @@ and use it a LOT.
 
 You can see how the settings above will resolve into the `pre-commit run --files <current-file.py>`
 example. This configuration uses PyCharm's environment variables (called Macros) that help use here.
-Because External Tools are an IDE-wide option, we use the `$PyInterpreterDirectory$` variable so we
-can configure this once and have it work across projects. Without this macro the setting would be
-this for the website project `${NOLSCODE}/venvs/website/bin/precommit`. But we don't want ALL
-projects using the website pre-commit binary, hence the variable.
+Because External Tools are an IDE-wide option, we use the `$PyInterpreterDirectory$` variable to
+configure this once and have it work across projects. Without this macro the setting would be this
+for the website project `${NOLSCODE}/venvs/website/bin/precommit`. We don't want ALL projects using
+the website pre-commit binary, hence the variable.
 
 Most editors should have similar tools to aid configuration.
+
+## Deploying
+
+`format-code` is designed to be used as a pre-commit hook. As so, there is no build step, wheel
+creation, etc. Pre-commit pulls the code directly from
+`https://github.com/NationalOutdoorLeadershipSchool/format-code` by tag. To 'deploy' a new version,
+commit to the master branch and tag it with a new version tag. Then it is available for use in
+various project `.pre-commit-config.yaml` files.
